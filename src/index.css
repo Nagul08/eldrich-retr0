@@ -1,0 +1,35 @@
+
+@font-face {
+  font-family:  'red-dead';
+  src: url(./fonts/chinese\ rocks\ rg.ttf) format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  
+}
+
+:root {
+  --bg:        #000000;
+  --surface:   #0e0e1a;
+  --border:    #1e1e30;
+  --text:      #c8c8d8;
+  --text-dim:  #5a5a72;
+  --accent:    #7c5cbf;
+  --accent-lo: #3a2d6b;
+  --glow:      #a07eff;
+  
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
