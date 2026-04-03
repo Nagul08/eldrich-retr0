@@ -26,7 +26,7 @@ function App() {
     setShow(false)
   }, 3500) 
   setTimeout(() => {
-     window.location.href = 'https://luma.com/sksprqf1'
+     window.location.href = 'https://github.com/Nagul08'
   }, 3550)
 }
  
@@ -58,37 +58,44 @@ useEffect(() => {
   return (
 
 
-   <>
-   <div  onMouseDown={() => setClicked(true)} onMouseUp={() => setClicked(false)}>
-    <div ref={cursorRef} className={`cursor ${hover ? 'expanded' : ''} ${clicked ? 'clicked' : ''}`} style={{
-      left: `${pos.x}px`,
-      top: `${pos.y}px`,
-      
-    }} />
+<>
+  <div onMouseDown={() => setClicked(true)} onMouseUp={() => setClicked(false)}>
+    <div
+      ref={cursorRef}
+      className={`cursor ${hover ? 'expanded' : ''} ${clicked ? 'clicked' : ''}`}
+      style={{
+        left: `${pos.x}px`,
+        top: `${pos.y}px`,
+      }}
+    />
 
-
-    {
-      <div className='base'>
-    <button className="bigB" onClick={handleClick} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-   <img src="/retr0.svg" alt="N" className={`h ${clicked ? '':`${hover ? 'big' : ''}`}`} />
-   {show && <h1 style={{  
-    position: 'absolute',
-    top: `${style.y}%`,
-    left: `${style.x}%`,
-    transform: `rotate(${style.rotation}deg)`,
-   }} >*Noice*</h1>}
-
-   </button>
-            <img src="./retr0-f.png" alt="Spidey" className='Spidey' />
-   </div>
-   }
-
-
-
+    <div className='base'>
+      <button
+        className="bigB"
+        onClick={handleClick}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <img
+          src="/retr0.svg"
+          alt="N"
+          className={`h ${clicked ? '' : `${hover ? 'big' : ''}`}`}
+        />
+        {show && (
+          <h1 style={{
+            position: 'absolute',
+            top: `${style.y}%`,
+            left: `${style.x}%`,
+            transform: `rotate(${style.rotation}deg)`,
+          }}>
+            *Noice*
+          </h1>
+        )}
+      </button>
+      <img src="./retr0-f.png" alt="Spidey" className='Spidey' />
+    </div>
   </div>
-   
-   
-   </>
+</>
   )
 }
 
