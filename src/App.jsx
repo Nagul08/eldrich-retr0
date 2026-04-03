@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const [hover, setHover] = useState(false)
   const [clicked, setClicked] = useState(false)
+  const cursorRef = useRef(null);
 
 
   const handleClick = () => {
@@ -29,25 +30,47 @@ function App() {
   }, 3550)
 }
  
-
+useEffect(() => {
   const handleMouseMove = (e) => {
     setPos({ x: e.clientX, y: e.clientY })
+    if (cursorRef.current) cursorRef.current.style.opacity = 1
   }
+  const handleMouseLeave = () => {
+    if (cursorRef.current) cursorRef.current.style.opacity = 0
+  }
+  const handleMouseEnter = () => {
+    if (cursorRef.current) cursorRef.current.style.opacity = 1
+  }
+  document.addEventListener('mousemove', handleMouseMove)
+  document.addEventListener('mouseleave', handleMouseLeave)
+  document.addEventListener('mouseenter', handleMouseEnter)
+  return () => {
+    document.removeEventListener('mousemove', handleMouseMove)
+    document.removeEventListener('mouseleave', handleMouseLeave)
+    document.removeEventListener('mouseenter', handleMouseEnter)
+  }
+}, [])
 
+
+
+  
 
   return (
+
+
    <>
-   <div onMouseMove={handleMouseMove}  onMouseDown={() => setClicked(true)} onMouseUp={() => setClicked(false)}>
-    <div className={`cursor ${hover ? 'expanded' : ''} ${clicked ? 'clicked' : ''}`} style={{
+   <div  onMouseDown={() => setClicked(true)} onMouseUp={() => setClicked(false)}>
+    <div ref={cursorRef} className={`cursor ${hover ? 'expanded' : ''} ${clicked ? 'clicked' : ''}`} style={{
       left: `${pos.x}px`,
       top: `${pos.y}px`,
+      
     }} />
 
 
     {
       <div className='base'>
     <button className="bigB" onClick={handleClick} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-   <img src="/retr0.svg" alt="N" className='h' />
+   <img src="/retr0.svg" alt="N" className={`h ${clicked ? '':`${hover ? 'big' : ''}`}`} />
    {show && <h1 style={{  
     position: 'absolute',
     top: `${style.y}%`,
