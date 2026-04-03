@@ -15,6 +15,7 @@ h1{
 }
 .base {
 position: relative;
+overflow: hidden;
 }
 .bigB{
   background: none;
